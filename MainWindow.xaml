@@ -1,0 +1,129 @@
+﻿<Window x:Class="MaterialWeight.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MaterialWeight"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <TabControl Name="TabControl1">
+            <TabItem Header="收水器">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="115*"/>
+                        <ColumnDefinition Width="56*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--<TextBox HorizontalAlignment="Left"  Height="305" Margin="0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="562"/>-->
+                    <!--<TextBlock>收水器</TextBlock>-->
+                    <ListView Grid.Row="0" Grid.Column="0" Name="specificationslist">
+                        <ListView.View>
+                            <GridView FrameworkElement.FlowDirection="RightToLeft">
+                                <!--<GridViewColumn Header="弯板型号" DisplayMemberBinding="{Binding BendingPlate}"/>-->
+                                <GridViewColumn Header="弯板型号">
+
+
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding BendingPlate}" TextDecorations="Underline" Foreground="blue" Cursor="Hand" MouseLeftButtonUp="testButton60" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="5*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                            <Label Width="60" Content=" 片密度(kg/cm3):" VerticalAlignment="Center" ToolTip="x" Margin="10,4,0,3"/>
+                            <TextBox Text="1" Width="50" Margin="0 5 0 5" Background="#EEE" TextAlignment="Center"  />
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+                            <Label Width="85" Content=" 波片长度(m):" VerticalAlignment="Center" ToolTip="x" Margin="10,2,0,2" HorizontalAlignment="Center"/>
+                            <TextBox Text="1" Width="50" Margin="0 5 0 5" Background="#EEE" TextAlignment="Center"  />
+                            <Label Width="85" Content=" 波片片数(片):" VerticalAlignment="Center" ToolTip="x" Margin="0,2,0,2"/>
+                            <TextBox Text="16" Width="50" Margin="0 5 0 5" Background="#EEE" TextAlignment="Center"  />
+                            <Label Width="95" Content=" 波片厚度(mm):" VerticalAlignment="Center" ToolTip="x" Margin="0,2,0,2"/>
+                            <TextBox Text="16" Width="50" Margin="0 5 0 5" Background="#EEE" TextAlignment="Center"  />
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
+                            <Label Width="85" Content=" 弯板个数(个):" VerticalAlignment="Center" ToolTip="x" Margin="10,2,0,2"/>
+                            <TextBox Text="1" Width="50" Margin="0 5 0 5" Background="#EEE" TextAlignment="Center"  />
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal">
+                            <Label Width="85" Content=" 穿杆长度(m):" VerticalAlignment="Center" ToolTip="x" Margin="10,2,0,2"/>
+                            <TextBox Text="1" Width="50" Margin="0 5 0 5" Background="#EEE" TextAlignment="Center"  />
+                            <Label Width="85" Content=" 穿杆个数(跟):" VerticalAlignment="Center" ToolTip="x" Margin="0,2,0,2"/>
+                            <TextBox Text="16" Width="50" Margin="0 5 0 5" Background="#EEE" TextAlignment="Center"  />
+                        </StackPanel>
+                        <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal">
+                            <Label Width="85" Content=" 螺帽个数(个):" VerticalAlignment="Center" ToolTip="x" Margin="10,2,0,2"/>
+                            <TextBox Text="1" Width="50" Margin="0 5 0 5" Background="#EEE" TextAlignment="Center"  />
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="5*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+                            <Label Width="60" Content=" 质量(kg):" VerticalAlignment="Center" ToolTip="x" Margin="10,4,0,3"/>
+                            <TextBox Text="1" Width="50" Margin="0 5 0 5" Background="#EEE" TextAlignment="Center"  />
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
+                            <Label Width="60" Content=" 质量(kg):" VerticalAlignment="Center" ToolTip="x" Margin="10,4,0,3"/>
+                            <TextBox Text="1" Width="50" Margin="0 5 0 5" Background="#EEE" TextAlignment="Center"  />
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal">
+                            <Label Width="60" Content=" 质量(kg):" VerticalAlignment="Center" ToolTip="x" Margin="10,4,0,3"/>
+                            <TextBox Text="1" Width="50" Margin="0 5 0 5" Background="#EEE" TextAlignment="Center"  />
+                        </StackPanel>
+                        <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal">
+                            <Label Width="60" Content=" 质量(kg):" VerticalAlignment="Center" ToolTip="x" Margin="10,4,0,3"/>
+                            <TextBox Text="1" Width="50" Margin="0 5 0 5" Background="#EEE" TextAlignment="Center"  />
+                        </StackPanel>
+                        <StackPanel Grid.Row="5" Grid.Column="0" Orientation="Horizontal">
+                            <Label Width="80" Content=" 总质量(kg):" VerticalAlignment="Center" ToolTip="x" Margin="10,4,0,3"/>
+                            <TextBox Text="1" Width="50" Margin="0 5 0 5" Background="#EEE" TextAlignment="Center"  />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="填料">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock>填料</TextBlock>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="玻璃钢">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock>玻璃钢</TextBlock>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="管">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock>管</TextBlock>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
