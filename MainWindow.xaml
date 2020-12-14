@@ -26,7 +26,7 @@
 
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding BendingPlate}" TextDecorations="Underline" Foreground="blue" Cursor="Hand" MouseLeftButtonUp="testButton60" />
+                                            <TextBlock Text="ddd" TextDecorations="Underline" Foreground="blue" Cursor="Hand" MouseLeftButtonUp="testButton60" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -47,7 +47,7 @@
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
                             <Label Width="60" Content=" 片密度(kg/cm3):" VerticalAlignment="Center" ToolTip="x" Margin="10,4,0,3"/>
-                            <TextBox Text="1" Width="50" Margin="0 5 0 5" Background="#EEE" TextAlignment="Center"  />
+                            <TextBox  Text="{Binding PlateDensity, Mode=TwoWay}" Width="50" Margin="0 5 0 5" Background="#EEE" TextAlignment="Center"  />
                         </StackPanel>
                         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
                             <Label Width="85" Content=" 波片长度(m):" VerticalAlignment="Center" ToolTip="x" Margin="10,2,0,2" HorizontalAlignment="Center"/>
@@ -70,6 +70,10 @@
                         <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal">
                             <Label Width="85" Content=" 螺帽个数(个):" VerticalAlignment="Center" ToolTip="x" Margin="10,2,0,2"/>
                             <TextBox Text="1" Width="50" Margin="0 5 0 5" Background="#EEE" TextAlignment="Center"  />
+                        </StackPanel>
+                        <StackPanel Grid.Row="6" Grid.Column="0" Orientation="Horizontal">
+                            <Button Content="计算" Margin="0 0 0 0" Width="165" />
+
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Row="0" Grid.Column="2">
@@ -99,7 +103,8 @@
                             <Label Width="60" Content=" 质量(kg):" VerticalAlignment="Center" ToolTip="x" Margin="10,4,0,3"/>
                             <TextBox Text="1" Width="50" Margin="0 5 0 5" Background="#EEE" TextAlignment="Center"  />
                         </StackPanel>
-                        <StackPanel Grid.Row="5" Grid.Column="0" Orientation="Horizontal">
+
+                        <StackPanel Grid.Row="6" Grid.Column="0" Orientation="Horizontal">
                             <Label Width="80" Content=" 总质量(kg):" VerticalAlignment="Center" ToolTip="x" Margin="10,4,0,3"/>
                             <TextBox Text="1" Width="50" Margin="0 5 0 5" Background="#EEE" TextAlignment="Center"  />
                         </StackPanel>
