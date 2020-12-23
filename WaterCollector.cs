@@ -11,8 +11,8 @@ namespace MaterialWeight
     class BendingPlate
     {
         public string _typeName;
-        public double _weight;
-        public double _thickness;
+        public double _weight = 19/1000;
+        //public double _thickness;
     }
 
     //波片
@@ -21,6 +21,7 @@ namespace MaterialWeight
         public double _length;
         public double _weight;
         public double _density;
+        public double _thickness;
     }
     //穿杆
     class ThreadingRod
@@ -38,59 +39,94 @@ namespace MaterialWeight
     {
         public WaterCollector()
         {
-            wavePlate = new WavePlate();
-            bendingPlate = new BendingPlate();
-            threadingRod = new ThreadingRod();
-            nut = new Nut();
+            _wavePlate = new WavePlate();
+            _bendingplate = new BendingPlate();
+            _threadingRod = new ThreadingRod();
+            _nut = new Nut();
         }
-        public WavePlate wavePlate;
-        public BendingPlate bendingPlate;
-        public ThreadingRod threadingRod;
-        public Nut nut;
+        public WavePlate _wavePlate;
+        public int _wpnum;
+        public double _wpweight;
+        public BendingPlate _bendingplate;
+        public int _bpnum;
+        public double _bpweight;
+        public ThreadingRod _threadingRod;
+        public int _trnum;
+        public double _trweight;
+        public Nut _nut;
+        public int _nutnum;
+        public double _nutweight;
 
         public event PropertyChangedEventHandler PropertyChanged;
         //片密度
-        public double PlateDensity
+        public double WPDensity
         {
-            get { return wavePlate._density; }
+            get { return _wavePlate._density; }
             set
             {
-                wavePlate._density = value;
+                _wavePlate._density = value;
                 if(PropertyChanged != null)
                 {
-                    PropertyChanged(this, new PropertyChangedEventArgs("PlateDensity"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("WPDensity"));
                 }
             }
         }
-        //弯板类型
-        public string BPType
+        //波片长度
+        public double WPLength
         {
-            get { return _bendingplate._typeName; }
+            get { return _wavePlate._length; }
             set
             {
-                _bendingplate._typeName = value;
+                _wavePlate._length = value;
                 if (PropertyChanged != null)
                 {
-                    PropertyChanged(this, new PropertyChangedEventArgs("BPType"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("WPLength"));
                 }
             }
         }
-        //弯板
-        private BendingPlate _bendingplate;
-        public BendingPlate BendingPlate
+
+        //波片片数
+        public int WPNum
         {
-            get { return _bendingplate; }
+            get { return _wpnum; }
             set
             {
-                _bendingplate = value;
+                _wpnum = value;
                 if (PropertyChanged != null)
                 {
-                    PropertyChanged(this, new PropertyChangedEventArgs("BendingPlate"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("WPNum"));
                 }
             }
         }
+        //波片厚度
+        public double WPThickness
+        {
+            get { return _wavePlate._thickness; }
+            set
+            {
+                _wavePlate._thickness = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("WPThickness"));
+                }
+            }
+        }
+
+        //波片总质量
+        public double WPWeight
+        {
+            get { return _wpweight; }
+            set
+            {
+                _wpweight = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("WPWeight"));
+                }
+            }
+        }
+
         //弯板数量
-        public int _bpnum;
         public int BPNum
         {
             get { return _bpnum; }
@@ -104,5 +140,121 @@ namespace MaterialWeight
             }
         }
 
+        //弯板类型
+        public string BPType
+        {
+            get { return _bendingplate._typeName; }
+            set
+            {
+                _bendingplate._typeName = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("BPType"));
+                }
+            }
+        }
+
+        //弯板
+        //public BendingPlate BendingPlate
+        //{
+        //    get { return _bendingplate; }
+        //    set
+        //    {
+        //        _bendingplate = value;
+        //        if (PropertyChanged != null)
+        //        {
+        //            PropertyChanged(this, new PropertyChangedEventArgs("BendingPlate"));
+        //        }
+        //    }
+        //}
+
+        //弯板总质量
+        public double BPWeight
+        {
+            get { return _bpweight;}
+            set
+            {
+                _bpweight = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("BPWeight"));
+                }
+            }
+        }
+
+        //穿杆长度
+        public double TRLength
+        {
+            get { return _threadingRod._length; }
+            set
+            {
+                _threadingRod._length = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("TRLength"));
+                }
+            }
+        }
+
+        //穿杆个数
+        public int TRNum
+        {
+            get { return _trnum; }
+            set
+            {
+                _trnum = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("TRNum"));
+                }
+            }
+        }
+        //穿杆总质量
+        public double TRWeight
+        {
+            get { return _trweight; }
+            set
+            {
+                _trweight = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("TRWeight"));
+                }
+            }
+        }
+
+        //螺帽个数
+        public int NutNum
+        {
+            get { return _nutnum; }
+            set
+            {
+                _nutnum = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("NutNum"));
+                }
+            }
+        }
+
+        //螺帽总质量
+        public double NutWeight
+        {
+            get { return _nutweight; }
+            set
+            {
+                _nutweight = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("NutWeight"));
+                }
+            }
+        }
+
+        public double GetWavePlateWeight(double wpthickness, double wpdensity, int wpnum)
+        {
+            double ret = 0.25 * 1 * wpthickness / 1000 * wpdensity * wpnum;
+            return ret;
+        }
     }
 }

@@ -27,7 +27,7 @@ namespace MaterialWeight
             List<WaterCollector> s = new List<WaterCollector>();
             for (int i = 0; i < 20; i++)
             {
-                s.Add(new WaterCollector { BendingPlate = new BendingPlate { _typeName = i.ToString() } });
+                s.Add(new WaterCollector { BPType = "60#" });
             }
             specificationslist.ItemsSource = s;
         }
@@ -42,7 +42,7 @@ namespace MaterialWeight
         private void testButton60(object sender, MouseButtonEventArgs e)
         {
             WaterCollector hl = specificationslist.SelectedItem as WaterCollector;
-            MessageBox.Show(hl.PlateDensity.ToString());
+            MessageBox.Show(hl.WPDensity.ToString());
         }
 
     }
