@@ -17,7 +17,7 @@ namespace MaterialWeight.ViewModels
         public MWWaterCollectorViewModel()
         {
             _watercollector = new MWWaterCollectorModel();
-            _calcommand = new MWCalculateCommand(GetWavePlateWeight, _watercollector.IsValid);
+            _calcommand = new MWCalculateCommand(GetWeight, _watercollector.IsValid);
         }
 
         public ICommand GetWeightCommand
@@ -236,9 +236,17 @@ namespace MaterialWeight.ViewModels
             }
         }
 
-        public void GetWavePlateWeight()
+        public void GetWeight()
         {
-            AllWeight = 0.25 * 1 * WPThickness / 1000 * WPDensity * WPNum;
+            //波片质量
+            WPWeight = 0.25 * 1 * WPThickness / 1000 * WPDensity * WPNum;
+            //弯板质量
+            BPWeight = _watercollector._bpweight * BPNum;
+            //穿杆质量
+            TRWeight = _watercollector._trweight * TRNum;
+            //螺帽质量
+            NutWeight = _watercollector._nutweight * NutNum;
+            AllWeight = WPWeight + BPWeight + TRWeight + NutWeight;
             //return ret;
         }
     }

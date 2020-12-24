@@ -56,7 +56,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\MWCalculateCommand.cs" />
+    <Compile Include="Models\MWFillingModel.cs" />
     <Compile Include="Models\MWWaterCollectorModel.cs" />
+    <Compile Include="ViewModels\MWFillingViewModel.cs" />
     <Compile Include="ViewModels\MWWaterCollectorViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
