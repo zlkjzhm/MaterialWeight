@@ -1,71 +1,42 @@
-﻿using System;
+﻿using MaterialWeight.Commands;
+using MaterialWeight.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
-namespace MaterialWeight
+namespace MaterialWeight.ViewModels
 {
-    //弯板
-    class BendingPlate
+    class MWWaterCollectorViewModel : INotifyPropertyChanged
     {
-        public string _typeName;
-        public double _weight = 19/1000;
-        //public double _thickness;
-    }
-
-    //波片
-    class WavePlate
-    {
-        public double _length;
-        public double _weight;
-        public double _density;
-        public double _thickness;
-    }
-    //穿杆
-    class ThreadingRod
-    {
-        public double _length;
-        public double _weight;
-    }
-
-    //螺帽
-    class Nut
-    {
-        public double _weight;
-    }
-    class WaterCollector : INotifyPropertyChanged
-    {
-        public WaterCollector()
+        private MWWaterCollectorModel _watercollector;
+        private MWCalculateCommand _calcommand;
+        public MWWaterCollectorViewModel()
         {
-            _wavePlate = new WavePlate();
-            _bendingplate = new BendingPlate();
-            _threadingRod = new ThreadingRod();
-            _nut = new Nut();
+            _watercollector = new MWWaterCollectorModel();
+            _calcommand = new MWCalculateCommand(GetWavePlateWeight, _watercollector.IsValid);
         }
-        public WavePlate _wavePlate;
-        public int _wpnum;
-        public double _wpweight;
-        public BendingPlate _bendingplate;
-        public int _bpnum;
-        public double _bpweight;
-        public ThreadingRod _threadingRod;
-        public int _trnum;
-        public double _trweight;
-        public Nut _nut;
-        public int _nutnum;
-        public double _nutweight;
+
+        public ICommand GetWeightCommand
+        {
+            get
+            {
+                return _calcommand;
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         //片密度
         public double WPDensity
         {
-            get { return _wavePlate._density; }
+            get { return _watercollector._wavePlate._density; }
             set
             {
-                _wavePlate._density = value;
-                if(PropertyChanged != null)
+                _watercollector._wavePlate._density = value;
+                if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("WPDensity"));
                 }
@@ -74,10 +45,10 @@ namespace MaterialWeight
         //波片长度
         public double WPLength
         {
-            get { return _wavePlate._length; }
+            get { return _watercollector._wavePlate._length; }
             set
             {
-                _wavePlate._length = value;
+                _watercollector._wavePlate._length = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("WPLength"));
@@ -88,10 +59,10 @@ namespace MaterialWeight
         //波片片数
         public int WPNum
         {
-            get { return _wpnum; }
+            get { return _watercollector._wpnum; }
             set
             {
-                _wpnum = value;
+                _watercollector._wpnum = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("WPNum"));
@@ -101,10 +72,10 @@ namespace MaterialWeight
         //波片厚度
         public double WPThickness
         {
-            get { return _wavePlate._thickness; }
+            get { return _watercollector._wavePlate._thickness; }
             set
             {
-                _wavePlate._thickness = value;
+                _watercollector._wavePlate._thickness = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("WPThickness"));
@@ -115,10 +86,10 @@ namespace MaterialWeight
         //波片总质量
         public double WPWeight
         {
-            get { return _wpweight; }
+            get { return _watercollector._wpweight; }
             set
             {
-                _wpweight = value;
+                _watercollector._wpweight = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("WPWeight"));
@@ -129,10 +100,10 @@ namespace MaterialWeight
         //弯板数量
         public int BPNum
         {
-            get { return _bpnum; }
+            get { return _watercollector._bpnum; }
             set
             {
-                _bpnum = value;
+                _watercollector._bpnum = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("BPNum"));
@@ -143,10 +114,10 @@ namespace MaterialWeight
         //弯板类型
         public string BPType
         {
-            get { return _bendingplate._typeName; }
+            get { return _watercollector._bendingplate._typeName; }
             set
             {
-                _bendingplate._typeName = value;
+                _watercollector._bendingplate._typeName = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("BPType"));
@@ -171,10 +142,10 @@ namespace MaterialWeight
         //弯板总质量
         public double BPWeight
         {
-            get { return _bpweight;}
+            get { return _watercollector._bpweight; }
             set
             {
-                _bpweight = value;
+                _watercollector._bpweight = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("BPWeight"));
@@ -185,10 +156,10 @@ namespace MaterialWeight
         //穿杆长度
         public double TRLength
         {
-            get { return _threadingRod._length; }
+            get { return _watercollector._threadingRod._length; }
             set
             {
-                _threadingRod._length = value;
+                _watercollector._threadingRod._length = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("TRLength"));
@@ -199,10 +170,10 @@ namespace MaterialWeight
         //穿杆个数
         public int TRNum
         {
-            get { return _trnum; }
+            get { return _watercollector._trnum; }
             set
             {
-                _trnum = value;
+                _watercollector._trnum = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("TRNum"));
@@ -212,10 +183,10 @@ namespace MaterialWeight
         //穿杆总质量
         public double TRWeight
         {
-            get { return _trweight; }
+            get { return _watercollector._trweight; }
             set
             {
-                _trweight = value;
+                _watercollector._trweight = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("TRWeight"));
@@ -226,10 +197,10 @@ namespace MaterialWeight
         //螺帽个数
         public int NutNum
         {
-            get { return _nutnum; }
+            get { return _watercollector._nutnum; }
             set
             {
-                _nutnum = value;
+                _watercollector._nutnum = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("NutNum"));
@@ -240,10 +211,10 @@ namespace MaterialWeight
         //螺帽总质量
         public double NutWeight
         {
-            get { return _nutweight; }
+            get { return _watercollector._nutweight; }
             set
             {
-                _nutweight = value;
+                _watercollector._nutweight = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("NutWeight"));
@@ -251,10 +222,24 @@ namespace MaterialWeight
             }
         }
 
-        public double GetWavePlateWeight(double wpthickness, double wpdensity, int wpnum)
+        //收水器总质量
+        public double AllWeight
         {
-            double ret = 0.25 * 1 * wpthickness / 1000 * wpdensity * wpnum;
-            return ret;
+            get { return _watercollector._allweight; }
+            set
+            {
+                _watercollector._allweight = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("AllWeight"));
+                }
+            }
+        }
+
+        public void GetWavePlateWeight()
+        {
+            AllWeight = 0.25 * 1 * WPThickness / 1000 * WPDensity * WPNum;
+            //return ret;
         }
     }
 }

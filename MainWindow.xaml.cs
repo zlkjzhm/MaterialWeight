@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialWeight.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,10 +25,10 @@ namespace MaterialWeight
         {
             InitializeComponent();
             //定义一个列表集合,设置给listview的数据源
-            List<WaterCollector> s = new List<WaterCollector>();
+            List<MWWaterCollectorViewModel> s = new List<MWWaterCollectorViewModel>();
             for (int i = 0; i < 20; i++)
             {
-                s.Add(new WaterCollector { BPType = "60#" });
+                s.Add(new MWWaterCollectorViewModel { BPType = "60#" });
             }
             specificationslist.ItemsSource = s;
         }
@@ -41,7 +42,7 @@ namespace MaterialWeight
 
         private void testButton60(object sender, MouseButtonEventArgs e)
         {
-            WaterCollector hl = specificationslist.SelectedItem as WaterCollector;
+            MWWaterCollectorViewModel hl = specificationslist.SelectedItem as MWWaterCollectorViewModel;
             MessageBox.Show(hl.WPDensity.ToString());
         }
 
